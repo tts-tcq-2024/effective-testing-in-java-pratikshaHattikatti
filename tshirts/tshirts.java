@@ -11,7 +11,7 @@ public class Tshirts {
 
     public static void main(String[] args) {  
         assert(size(38) == "S");
-        assert(size(50) == "M");
+        assert(size(50) == "L");
         assert(size(40) == "M");
         assert(size(43) == "L");
         System.out.println("All is well (maybe!)");
