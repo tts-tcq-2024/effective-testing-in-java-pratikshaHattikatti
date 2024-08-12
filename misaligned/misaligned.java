@@ -12,7 +12,7 @@ public class Misaligned {
     }
     public static void main(String[] args) { 
         int result = printColorMap();
-        assert(result == 36);
+        assert(result == 30);
         System.out.println("All is well (maybe!)");
     }
 }
