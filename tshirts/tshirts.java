@@ -9,11 +9,13 @@ public class Tshirts {
         }
     }
 
-    public static void main(String[] args) { 
-        assert(size(37) == "S");
-        assert(size(38) == "M");
+    public static void main(String[] args) {  
+        assert(size(37) == "S"); // S size
+        assert(size(38) == "M"); // Corrected condition to be M size
         assert(size(40) == "M");
-        assert(size(43) == "L");
+        assert(size(41) == "M");
+        assert(size(42) == "L");
+        assert(size(50) == "L");
         System.out.println("All is well (maybe!)");
     }
 }
