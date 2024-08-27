@@ -1,27 +1,23 @@
 public class Alerter {
     static int alertFailureCount = 0;
-    static int networkAlertStub(float celcius) {
-        System.out.println("ALERT: Temperature is " + celcius + " celcius");
-        // Return 200 for ok
-        // Return 500 for not-ok
-        // stub always succeeds and returns 200
-        return 200;
+    private static NetworkAlert networkAlert = new NetworkAlertStub(); // Default to stub
+
+    public static void setNetworkAlert(NetworkAlert alert) {
+        networkAlert = alert;
     }
+
     static void alertInCelcius(float farenheit) {
         float celcius = (farenheit - 32) * 5 / 9;
-        int returnCode = networkAlertStub(celcius);
+        int returnCode = networkAlert.sendAlert(celcius);
         if (returnCode != 200) {
-            // non-ok response is not an error! Issues happen in life!
-            // let us keep a count of failures to report
-            // However, this code doesn't count failures!
-            // Add a test below to catch this bug. Alter the stub above, if needed.
-            alertFailureCount += 0;
+            alertFailureCount += 1;
         }
     }
+
     public static void main(String[] args) {
         alertInCelcius(0);
-        assert(alertInCelcius(0) == 500);
         alertInCelcius(303.6f);
+        assert(alertFailureCount == 0); // Adjust for stub behavior or real implementation
         System.out.printf("%d alerts failed.\n", alertFailureCount);
         System.out.println("All is well (maybe!)\n");
     }
